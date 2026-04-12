@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: aura-music-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npx tsx server/index.ts
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /api/trending
+    autoDeploy: true
